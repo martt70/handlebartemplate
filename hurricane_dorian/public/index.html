@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--JQuery UI: default css (smoothness)(always first)-->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> 
+
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <!--JQuery (always first)-->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+crossorigin="anonymous"></script>
+
+<!--JQuery UI core (always first)-->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+<!--JQuery UI(after JQuery UI core) - Controls Dialog Modal -->
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> 
+
+</head>
+<body>
+  <!---(8)-->
+  <h3>Inserting Data into the database</h3>
+  <h3>Data List</h3>
+  <div id="storesF">
+  <div id="modalStationForm">
+      
+    <!--form id="stationForm">-->
+    <form id="stationForm" method="POST" action="/api/station" enctype="multipart/form-data">
+      <input type="hidden" id="id" name="record_id">
+
+      <label>Store Name:</label>
+      <!--When submitting a form, the name value is important and is used in php file, while the id is used for css and javascript(below)-->
+      <input type="text" name="station" id="store" size="40" placeholder="Enter Store Name">
+      <br><br>
+      
+      <label for="file">Profile Photo:</label>
+      <input type="file" name="image" id="image" onChange={this.uploadFile}>
+      <br><br> 
+
+      <label>Address:</label>
+      <input type="text" name="address" id="location" size="40" placeholder="Enter the store's address">
+      <br><br>
+
+      <label>Store Sales:</label>
+      <input type="number" name="monthlycstoresales" id="sales" size="20">
+      <br><br>
+
+      <label>Operator:</label>
+      <input type="text" name="operator" id="dealer" size="40" placeholder="Enter the operator's name">
+      <br><br>
+
+      <label>Top SKU item:</label>
+      <input type="text" name="topsku" id="topitem" size="40" placeholder="Enter the store's top sku item">
+
+      
+      <br><br>
+
+      <input id="insertD" type="submit" value="Insert">
+      <input id="insertE" type="submit" value="Edit">
+      <div id="statusF"></div>
+      </form>
+   
+      
+      </div>   <!--id=storesF-->
+      
+      </div>  <!--id=modalStationForm-->
+      
+      
+      </div>  <!--//id=container-->
+      </div>  <!--//id=background-->
+
+      <script>
+      $(document).on('click', '.insert', function (e) {
+    //$('#insertD').click(() => {
+    e.preventDefault();
+    $("#insertE").remove();
+    $("#insertD").show();
+    $("#stationForm")[0].reset();
+    $("#modalStationForm")
+      .dialog("option", "title", "Inserting New Station")
+      .dialog("open");
+  });
+  
+  $("#stationForm").on('submit',  function (e) { 
+    e.preventDefault();
+    console.log(this);
+    var data = new FormData(this);
+    console.log(data);
+    $.ajax({
+      url: '/api/station',
+      contentType: false,
+      processData: false,
+      type:'POST',
+      dataType: 'JSON',
+      data: data,
+      success: (data) => {
+//        console.log(JSON.stringify(data, null,2));
+        $('#result').text(JSON.stringify(data, null,2));
+        alert('Entry Record Successfully Submitted');
+      },
+    });
+ 
+  });
+
+      
+      </script>
+
+
+</body>
+</html>

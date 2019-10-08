@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU"
+    crossorigin="anonymous">
+
+    <!--JQuery UI: default css (smoothness)(always first)-->
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css"> 
+
+<!--Bootstrap css-->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="/magnific-popup/magnific-popup.css">
+
+<link rel="stylesheet" href="/css/style.css">
+<title>{{title}}</title>
+  <!--<title>CodeGig</title>-->
+</head>
+
+<body>
+  <header>
+    
+    <!--<h2><a href="index.html"><i class="fas fa-code"></i>-->
+    <!--<img id="img" src="uploads/{{photo_image}}" width="70" height="70">-->
+    <h2><a href="/"><img src="/img/gb_logo.png" alt="logo" width=60 height=40>
+        Hurricane Dorian Assessment</a></h2>
+    <nav>
+      <ul>
+        <li>
+          <!--<a href="index.html">Home</a>-->
+          <a href="/">Home</a>
+        </li>
+        <li>
+          <!--<a href="gigs.html">All Gigs</a>-->
+          <a href="/api/alldata">All Equipment</a>
+        </li>
+        <li>
+         <!--<a href="add.html">Add Gig</a>-->
+         <!-- <a href="/gigs/add">Add Gig</a>-->
+          <a href="/api/station">Add Equipment</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!--
+  <section id="search" class="search-wrap">
+    <h1>Find A Coding Gig</h1>
+    <form action="gigs.html" class="search-form">
+      <i class="fas fa-search"></i>
+      <input type="search" name="term" placeholder="Javascript, PHP, Rails, etc...">
+      <input type="submit" value="Search">
+    </form>
+  </section> -->
+
+  {{{body}}}
+
+  
+<!-- jQuery 1.7.2+ or Zepto.js 1.0+ -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<!-- Magnific Popup core JS file -->
+<script src="/magnific-popup/magnific-popup.js"></script>
+
+<!--JQuery (always first)-->
+<script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+crossorigin="anonymous"></script>
+
+<!--JQuery UI core (always first)-->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+
+ <script>
+          $(document).on('click','img',function(){
+   if (this.id == "img") {
+       this.className=='std' ? this.className = 'big' : this.className='std';
+   }
+  });
+<img id="img" class="std" src="/uploads/{{photo_image}}">
+</script> 
+  
+</body>
+
+</html>
